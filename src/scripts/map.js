@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentMousePos
 
         if (isTouch) {
+          event.preventDefault()
           currentMousePos = { x: event.touches[0].pageX - offset.left, y: event.touches[0].pageY - offset.top }
         } else {
           currentMousePos = { x: event.pageX - offset.left, y: event.pageY - offset.top }
