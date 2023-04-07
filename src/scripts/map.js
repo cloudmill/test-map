@@ -39,23 +39,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const onMouseDown = (event) => {
       if (isImageLoaded) {
         isDragging = true
-        mousePos = { x: event.pageX - offset.left, y: event.pageY - offset.top }
+        
+        if (isTouch) {
+          mousePos = { x: event.touches[0].pageX - offset.left, y: event.touches[0].pageY - offset.top }
+        } else {
+          mousePos = { x: event.pageX - offset.left, y: event.pageY - offset.top }
+        }
       }
     }
 
     const onMouseMove = (event) => {
       if (isDragging) {
-        const currentMousePos = { x: event.pageX - offset.left, y: event.pageY - offset.top }
+        let currentMousePos
+
+        if (isTouch) {
+          currentMousePos = { x: event.touches[0].pageX - offset.left, y: event.touches[0].pageY - offset.top }
+        } else {
+          currentMousePos = { x: event.pageX - offset.left, y: event.pageY - offset.top }
+        }
+
         const changeX = currentMousePos.x - mousePos.x;
         const changeY = currentMousePos.y - mousePos.y;
 
         mousePos = currentMousePos
 
-        var imgTop = parseInt($(picture).css('top'), 10);
-        var imgLeft = parseInt($(picture).css('left'), 10);
+        let imgTop = parseInt($(picture).css('top'), 10);
+        let imgLeft = parseInt($(picture).css('left'), 10);
         
-        var imgTopNew = imgTop + changeY;
-        var imgLeftNew = imgLeft + changeX;
+        let imgTopNew = imgTop + changeY;
+        let imgLeftNew = imgLeft + changeX;
 
         if(imgTopNew > 0)
           imgTopNew = 0;

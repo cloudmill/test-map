@@ -112,6 +112,9 @@
 
     img {
       width: rem(2376px);
+      @media #{media("<")} {
+        width: rem(1515px);
+      }
       height: auto;
       max-width: none;
       max-height: none;
