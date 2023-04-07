@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       container.addEventListener('mousemove', (event) => {
         onMouseMove(event)
-      })
+      }, { passive: false })
     }
   })
 })
