@@ -1,0 +1,39 @@
+extends ../app
+
+
+
+block header
+block footer
+
+block grid-test
+
+
+
+block content
+  .map(data-real-tabs='')
+    //- .map__content 
+      .map__title.section__heading
+        |География поставок&nbsp; #[br] продукции
+      .map__tabs 
+        .tabs
+          .tabs__item.active(data-tabs-item='')
+            |Свежий хлеб
+          .tabs__item(data-tabs-item='')
+            |Кондитерские изделия
+          .tabs__item(data-tabs-item='')
+            |Замороженная продукция
+    .map__container
+      .map__block.active(data-tabs-block='' data-pin-container='')
+        picture.picture.map__img(data-pin-image='')
+          source(srcset="assets/images/map-1.webp" type="image/webp")
+          img.picture__img(src="assets/images/map-1.jpeg", alt="")
+      .map__block(data-tabs-block='' data-pin-container='')
+        picture.picture.map__img(data-pin-image='')
+          source(srcset="assets/images/map-2.webp" type="image/webp")
+          img.picture__img(src="assets/images/map-2.jpeg", alt="")
+      .map__block(data-tabs-block='' data-pin-container='')
+        picture.picture.map__img(data-pin-image='')
+          source(srcset="assets/images/map-3.webp" type="image/webp")
+          img.picture__img(src="assets/images/map-3.jpeg", alt="")
+      .map__icon 
+        +grab-svg.map__svg

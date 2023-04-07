@@ -1,0 +1,37 @@
+.grid-test {
+  position: fixed;
+  @include fsl(22px);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20000; // ?
+
+  width: 100vw;
+  overflow: hidden;
+  pointer-events: none;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__col {
+    width: calc(#{$col-width-m});
+
+    @media #{media(">")} {
+      width: calc(#{$col-width-d});
+    }
+
+    flex-shrink: 0;
+    min-height: 100vh;
+
+    // background-color: rgba($color: black, $alpha: 0.1); // ?
+
+    // скрываем на мобильном лишние колонки
+    &:nth-child(-n + #{$col-count-d - $col-count-t}) {
+      @media #{media("<")} {
+        display: none;
+      }
+    }
+  }
+}

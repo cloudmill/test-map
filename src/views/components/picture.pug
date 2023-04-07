@@ -1,0 +1,30 @@
+mixin picture(fileName)
+  -
+    var file = {
+      getTitle(filename) {
+        var segments = filename.split('.');
+        segments.pop();
+        var title = segments.join('.');
+        return title;
+      },
+      getExtension(filename) {
+        var segments = filename.split('.');
+        var extension = segments.pop();
+        return extension;
+      },
+      getPath(title, extension) {
+        var path = 'assets/images/' + title + "." + extension;
+        return path;
+      },
+    };
+    var fileTitle = file.getTitle(fileName);
+    var fileExtension = file.getExtension(fileName);
+  //- img.picture(src=(file.getPath(fileTitle, fileExtension)) alt="")
+  picture.picture&attributes(attributes)
+    source(
+      type="image/webp"
+      srcset=(file.getPath(fileTitle, "webp") + " 1x")
+    )
+    img.picture__img(
+      src=(file.getPath(fileTitle, fileExtension))
+    )

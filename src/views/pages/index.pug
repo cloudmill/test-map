@@ -1,0 +1,16 @@
+extends ../app
+
+
+
+block header
+block footer
+
+block grid-test
+
+
+
+block content
+  ul.index-list
+    each route in data.routes
+      li
+        a(href=route.href)= route.title
